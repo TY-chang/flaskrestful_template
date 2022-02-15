@@ -2,7 +2,6 @@ from flask import Flask
 from flask_jwt import JWT
 from flask_restful import Api
 
-from db import db
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 from resources.user import UserRegister
@@ -15,11 +14,6 @@ app.secret_key = "ty"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 api = Api(app)
-
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
 
 
 app.config["JWT_AUTH_URL_RULE"] = "/login"  # used to be /auth

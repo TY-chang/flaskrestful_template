@@ -14,7 +14,7 @@ from security import authenticate, identity
 app = Flask(__name__)
 app.secret_key = "ty"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("POSTGRESQL_DATABASE_URL")  #"sqlite:///data.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("POSTGRESQL_DATABASE_URL","sqlite:///data.db")
 api = Api(app)
 
 
